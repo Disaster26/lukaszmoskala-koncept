@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>This website was hosted on Arduino - Łukasz Moskała</title>
+<meta name="description" content="How lukaszmoskala.pl was served from an Arduino Due with enc28j60 and w25q128 flash, using a custom on-disk format called yar.">
+<link rel="icon" type="image/png" href="../img/favicon.png">
+<link rel="stylesheet" href="../style.css">
+<style>
+.wylinka-badge{display:inline-flex;align-items:center;gap:.4em;color:inherit;text-decoration:none;font-size:.875em;line-height:1;opacity:.85}
+.wylinka-badge:hover,.wylinka-badge:focus-visible{opacity:1}
+.wylinka-badge:focus-visible{outline:2px solid currentColor;outline-offset:3px;border-radius:2px}
+.wylinka-badge svg{width:18px;height:18px;flex:none;overflow:visible}
+.wylinka-badge b{font-weight:600}
+.wylinka-badge .wy-old{opacity:.45;transform-origin:40px 30px;transition:transform .32s cubic-bezier(.3,.7,.4,1),opacity .32s ease-out}
+.wylinka-badge .wy-pod{opacity:0;transition:opacity .2s ease-out .08s}
+.wylinka-badge:hover .wy-old,.wylinka-badge:focus-visible .wy-old{transform:translate(9px,7px) rotate(9deg);opacity:0}
+.wylinka-badge:hover .wy-pod,.wylinka-badge:focus-visible .wy-pod{opacity:1}
+@media (prefers-reduced-motion:reduce){.wylinka-badge .wy-old,.wylinka-badge .wy-pod{transition:none}.wylinka-badge:hover .wy-old,.wylinka-badge:focus-visible .wy-old{transform:none;opacity:.45}.wylinka-badge:hover .wy-pod,.wylinka-badge:focus-visible .wy-pod{opacity:0}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="../index.html"><svg viewBox="-12 -40 174 174" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#23ff94"/><stop offset="1" stop-color="#a6f75a"/></linearGradient></defs><rect x="-12" y="-40" width="174" height="174" fill="#000"/><path fill="url(#hg)" d="M4.1 2h1.5l-1.1 10h-1.5zM7.5 2h1.5l-1.1 10h-1.5zM1 5h8v1.4h-8zM1 8.6h8v1.4h-8zM4.1 16h1.5l-1.1 10h-1.5zM7.5 16h1.5l-1.1 10h-1.5zM1 19h8v1.4h-8zM1 22.6h8v1.4h-8zM4.1 30h1.5l-1.1 10h-1.5zM7.5 30h1.5l-1.1 10h-1.5zM1 33h8v1.4h-8zM1 36.6h8v1.4h-8zM4.1 44h1.5l-1.1 10h-1.5zM7.5 44h1.5l-1.1 10h-1.5zM1 47h8v1.4h-8zM1 50.6h8v1.4h-8zM4.1 58h1.5l-1.1 10h-1.5zM7.5 58h1.5l-1.1 10h-1.5zM1 61h8v1.4h-8zM1 64.6h8v1.4h-8zM4.1 72h1.5l-1.1 10h-1.5zM7.5 72h1.5l-1.1 10h-1.5zM1 75h8v1.4h-8zM1 78.6h8v1.4h-8zM4.1 86h1.5l-1.1 10h-1.5zM7.5 86h1.5l-1.1 10h-1.5zM1 89h8v1.4h-8zM1 92.6h8v1.4h-8zM14.1 86h1.5l-1.1 10h-1.5zM17.5 86h1.5l-1.1 10h-1.5zM11 89h8v1.4h-8zM11 92.6h8v1.4h-8zM24.1 86h1.5l-1.1 10h-1.5zM27.5 86h1.5l-1.1 10h-1.5zM21 89h8v1.4h-8zM21 92.6h8v1.4h-8zM34.1 86h1.5l-1.1 10h-1.5zM37.5 86h1.5l-1.1 10h-1.5zM31 89h8v1.4h-8zM31 92.6h8v1.4h-8zM44.1 86h1.5l-1.1 10h-1.5zM47.5 86h1.5l-1.1 10h-1.5zM41 89h8v1.4h-8zM41 92.6h8v1.4h-8zM54.1 86h1.5l-1.1 10h-1.5zM57.5 86h1.5l-1.1 10h-1.5zM51 89h8v1.4h-8zM51 92.6h8v1.4h-8zM64.1 86h1.5l-1.1 10h-1.5zM67.5 86h1.5l-1.1 10h-1.5zM61 89h8v1.4h-8zM61 92.6h8v1.4h-8zM84.1 2h1.5l-1.1 10h-1.5zM87.5 2h1.5l-1.1 10h-1.5zM81 5h8v1.4h-8zM81 8.6h8v1.4h-8zM84.1 16h1.5l-1.1 10h-1.5zM87.5 16h1.5l-1.1 10h-1.5zM81 19h8v1.4h-8zM81 22.6h8v1.4h-8zM84.1 30h1.5l-1.1 10h-1.5zM87.5 30h1.5l-1.1 10h-1.5zM81 33h8v1.4h-8zM81 36.6h8v1.4h-8zM84.1 44h1.5l-1.1 10h-1.5zM87.5 44h1.5l-1.1 10h-1.5zM81 47h8v1.4h-8zM81 50.6h8v1.4h-8zM84.1 58h1.5l-1.1 10h-1.5zM87.5 58h1.5l-1.1 10h-1.5zM81 61h8v1.4h-8zM81 64.6h8v1.4h-8zM84.1 72h1.5l-1.1 10h-1.5zM87.5 72h1.5l-1.1 10h-1.5zM81 75h8v1.4h-8zM81 78.6h8v1.4h-8zM84.1 86h1.5l-1.1 10h-1.5zM87.5 86h1.5l-1.1 10h-1.5zM81 89h8v1.4h-8zM81 92.6h8v1.4h-8zM94.1 16h1.5l-1.1 10h-1.5zM97.5 16h1.5l-1.1 10h-1.5zM91 19h8v1.4h-8zM91 22.6h8v1.4h-8zM104.1 30h1.5l-1.1 10h-1.5zM107.5 30h1.5l-1.1 10h-1.5zM101 33h8v1.4h-8zM101 36.6h8v1.4h-8zM114.1 44h1.5l-1.1 10h-1.5zM117.5 44h1.5l-1.1 10h-1.5zM111 47h8v1.4h-8zM111 50.6h8v1.4h-8zM124.1 30h1.5l-1.1 10h-1.5zM127.5 30h1.5l-1.1 10h-1.5zM121 33h8v1.4h-8zM121 36.6h8v1.4h-8zM134.1 16h1.5l-1.1 10h-1.5zM137.5 16h1.5l-1.1 10h-1.5zM131 19h8v1.4h-8zM131 22.6h8v1.4h-8zM144.1 2h1.5l-1.1 10h-1.5zM147.5 2h1.5l-1.1 10h-1.5zM141 5h8v1.4h-8zM141 8.6h8v1.4h-8zM144.1 16h1.5l-1.1 10h-1.5zM147.5 16h1.5l-1.1 10h-1.5zM141 19h8v1.4h-8zM141 22.6h8v1.4h-8zM144.1 30h1.5l-1.1 10h-1.5zM147.5 30h1.5l-1.1 10h-1.5zM141 33h8v1.4h-8zM141 36.6h8v1.4h-8zM144.1 44h1.5l-1.1 10h-1.5zM147.5 44h1.5l-1.1 10h-1.5zM141 47h8v1.4h-8zM141 50.6h8v1.4h-8zM144.1 58h1.5l-1.1 10h-1.5zM147.5 58h1.5l-1.1 10h-1.5zM141 61h8v1.4h-8zM141 64.6h8v1.4h-8zM144.1 72h1.5l-1.1 10h-1.5zM147.5 72h1.5l-1.1 10h-1.5zM141 75h8v1.4h-8zM141 78.6h8v1.4h-8zM144.1 86h1.5l-1.1 10h-1.5zM147.5 86h1.5l-1.1 10h-1.5zM141 89h8v1.4h-8zM141 92.6h8v1.4h-8z"/></svg><span>lukaszmoskala.pl</span></a>
+<nav class="nav" aria-label="Main"><a href="../index.html">About</a><a href="../projects/dodge-challenger.html">Dodge Challenger</a><a href="../projects/arduino-web-server.html" aria-current="page">Arduino server</a><a href="../projects/garage-door.html">Garage</a><a href="../notes.html">Notes</a><a href="../index.html#contact">Contact</a></nav>
+<details class="menu"><summary aria-label="Menu"># menu</summary><nav class="nav" aria-label="Main mobile"><a href="../index.html">About</a><a href="../projects/dodge-challenger.html">Dodge Challenger</a><a href="../projects/arduino-web-server.html" aria-current="page">Arduino server</a><a href="../projects/garage-door.html">Garage</a><a href="../notes.html">Notes</a><a href="../index.html#contact">Contact</a></nav></details>
+</div></header>
+<main id="main">
+
+<div class="page-head"><div class="wrap"><div class="crumbs"><a href="../index.html">~</a> / projects</div><h1><span class="hash">#</span>This website was hosted on Arduino</h1><p>Update 08.03.2022: it's no longer hosted on arduino as it was painful to maintain. It's now hosted on OpenBSD.</p></div></div>
+<div class="article"><div class="wrap"><nav class="toc" aria-label="On this page"><a href="#why">Why</a><a href="#yar">yar format</a><a href="#performance">Performance</a><a href="#compression">Compression</a><a href="#libraries">Libraries</a><a href="#picture">Picture</a><a href="#errors">Error messages</a></nav><div class="prose">
+<h2 id="why">Yes, really</h2>
+<p>But why, you may ask? Well, because I can, and because I wanted to learn some new things. I'll give you some details about this configuration.</p>
+<p>First of all, TLS is terminated at haproxy, not on arduino, because it's too heavy for arduino's 84MHz processor.</p>
+<p>So, I'm using Arduino Due, for multiple reasons:</p>
+<ul><li>It's quite powerful</li><li>It's the only one that I had working on hand</li></ul>
+<p>For networking I'm using enc28j60. There is one main reason for it: it works on boards with 3.3V logic level. Website files are stored on w25q128 flash module (128Mb, or 16 MiB).</p>
+<h2 id="yar">yar format</h2>
+<p>On-disk format is proprietary, and I call it yar <small>(I really tried to come up with something that can have yarr as an acronym, but my creativity failed me, yar stands for yeet archive)</small>.</p>
+<p>Yar format is rather quite simple, you have FLT (file lookup table, yes, I came up with this name on my own too) on the beginning of flash, then you have the files itself one after another, without any separator between them. FLT stores only basic information, such as:</p>
+<ul><li>file name</li><li>vhost, to which the file belongs</li><li>mime type</li><li>position of first byte of file in flash</li><li>length/size of file</li></ul>
+<p>Entire FLT is loaded to RAM on startup. Arduino due has 96k of RAM, so it's not really an issue. I have tools for manipulating yars and uploading them to arduino (over UDP). It's also protected with password, consisting of 16 random bytes that I found in /dev/urandom on my PC.</p>
+<h2 id="performance">Performance</h2>
+<p>Tested with image of my cat, I got around 120kB/s. Maybe with some tuning I could get more, maybe not, but for sure I don't care about that.</p>
+<p>Someone <a href="https://www.microchip.com/forums/m206948.aspx" rel="noopener">here</a> says that he gets 144KBytes/second, so I guess that my result makes sense, considering that I have to also read data from flash.</p>
+<h2 id="compression">Compression</h2>
+<p>Every file that has MIME type starting with "text/" is saved in flash in two copies: raw and gzipped. Then, if client sends accept-encoding gzip, arduino serves the gzipped version. I couldn't do compression on arduino side. And even if I could, it'd kill performance.</p>
+<h2 id="libraries">Used libraries</h2>
+<p>I used EthernetENC and SPIMemory libraries. I specifically didn't want to use library that would give me FAT32 filesystem on flash, as I wanted to create my own, just for the learning experience.</p>
+<h2 id="picture">Picture</h2>
+<figure><a href="../img/arduino-web-server.webp"><img src="../img/arduino-web-server.webp" alt="Arduino Due wired to an enc28j60 ethernet module and a breadboard" width="700" height="361" loading="lazy"></a><figcaption>Click on image to enlarge.</figcaption></figure>
+<p>I'm considering creating custom shield for arduino, which will have flash memory built in (soldered) and pins for connecting ethernet module. I will add photo when I will finish it.</p>
+<p>Aside from that, I'm thinking about adding some LEDs displaying status, so for example it will light up when serving request or during writing image.</p>
+<p>Images have bad quality, because I had to make them small, so that they don't take forever to load. Maybe I will consider implementing mod_pagespeed somehow ;)</p>
+<h2 id="errors">Error messages</h2>
+<p>Error messages are pictures, that I found at this great website called <a href="https://http.cat" rel="noopener">http.cat</a>. I use them for every error code that I can generate with my web server, with exception of 503 since 503 is displayed when flash is being updated, which means that I cannot reliably read it then.</p>
+</div></div></div>
+</main>
+<footer class="foot"><div class="wrap">
+<div class="grid">
+<div><h4># lukaszmoskala.pl</h4><p>Written by hand, without any kind of website generators. Cookies notice: this website does NOT use cookies, we don't need them.</p></div>
+<div><h4>## projects</h4><a href="../projects/dodge-challenger.html">Dodge Challenger</a><a href="../projects/arduino-web-server.html">Arduino server</a><a href="../projects/garage-door.html">Garage door</a><a href="../notes.html">Notes</a></div>
+<div><h4>## contact</h4><a href="https://matrix.to/#/@rezystor:im.mlody.eu" rel="noopener">Matrix</a><a href="../index.html#contact">E-mail</a><a href="https://lukaszmoskala.pl/gpg.asc" rel="noopener">GPG key</a></div>
+</div>
+<div class="bottom"><span>&copy; 2026 Łukasz Moskała</span><a class="wylinka-badge" href="https://wylinka.pl/?utm_source=lukaszmoskala.pl&amp;utm_medium=stopka&amp;utm_campaign=wykonanie" rel="noopener" title="Strona wykonana przez Wylinka"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false" fill="currentColor"><path d="M9.8 22.8l-1.2-7.9 2.2-3.7 15.5 4.6-.5 1.5-7.2 5.5 4.7 15.6 5-15.6 7 0 4.1 12.7-4.2-.9-2.6 1.8-.8-2.2-5.3 15.6-4.3 0 .4 .2-2.1 2.8-1.3-1.1 1.1-1.4-3.1 .2-.1-1.7 2.2-.1-5.7-16.5-4.8 .6-.8 3.1 0 .5-.3 .5 .8 2.2-1.6 .5-.4-1.3-.8 1.6-1.5-.8 .8-1.6-1.4 .6-.6-1.6 2.3-.8 .2-.4 1.3-4.8 5.9-.8-2.4-6.9zM15.2 13.7l-.1-.4-.4 .8-.1 .8 .1 1 .1 .4 .3 .7 .3-.9 .1-.7 0-.8z"/><path class="wy-pod" d="M37.1 49.8l-4.5-13.3 2.6-1.8 4.2 .9 .9 2.8 3-9.7 0-.5 .1-.8 3.2-8.4 .5-1 .6-1 .9-1.1 1.3-1 1.1-.7 1.4-.5 1.4-.3 .7 0 .9 0 1.2 .3 1.4 .6 .8 .5 .7 .7 .6 .7 .5 .9 .3 .9 .1 .9 0 .8-.2 .9-.5 .9-.5 .6-.7 .5-.7 .3-.1-.1 0-.1 .5-.5 .3-.7 .2-.5 0-.6-.1-.6-.3-.7-.4-.5-.4-.4-.5-.3-.6-.3-.7 0-.7 .1-.6 .1-.5 .4-.5 .5-.3 .5-.2 .7-.1 1.5-1.4 5.1-.8 3.3-.3 .7-.5 .7-6 17.5 1.9 .1-.1 1.7-3.1-.2 1.1 1.4-1.3 1.1-2.1-2.8 .4-.2z"/><path class="wy-old" d="M40.8 50l.4-.2-4.1 0-4.2-12.5 2.5-1.7 4.3 .9 .6 1.9 .6-1.6 0-.3 2.4-7.8 0-.5 .1-.8 3.2-8.4 .4-.8 .6-.9 .9-1.2 .9-.9 1.3-.8 1.4-.6 1.2-.3 1.4-.1 1.3 .1 .6 .2 .8 .3 1.1 .6 .9 .7 .7 .9 .5 .9 .3 .9 .1 1.1-.1 .9-.3 .9-.4 .7-.6 .7-.6 .4-.6 .2-.1-.1 0-.1 .5-.5 .3-.7 .2-.5 0-.5-.1-.6-.2-.6-.3-.5-.4-.5-.5-.3-.6-.3-.7-.1-.6 0-.6 .1-.6 .3-.6 .5-.3 .4-.2 .5-.1 .5-.1 1.5-1.4 5.1-.8 3.3-.3 .7-.5 .7-6 17.5 1.9 .1-.1 1.7-3.1-.2 1.1 1.4-1.3 1.1zM49.6 17.1l.6 1.7-1.5 1.9 .4 .4 1.8-2.1-.7-2.1zM48.1 28.3l.5 1.8-1.7 1.8 .4 .4 1.9-2-.6-2.2zM37.9 41.7l1.7-1.5-.4-.4-1.7 1.4zM42.6 38.7l-1.5 2.8 1.1 2-1.3 2.6 .5 .2 1.5-2.8-1.1-2 1.4-2.5z"/></svg><span>wykonanie: <b>Wylinka</b></span></a></div>
+</div></footer>
+
+</body>
+</html>
